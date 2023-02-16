@@ -32,7 +32,7 @@ resources:
       
 
 pipelines:
-  - name: Docker_Build_And_Push
+  - name: Docker_Build_And_Push_Quickstart_Pipeline
     configuration:
       jfrogCliVersion: 2  
     steps:
