@@ -42,7 +42,7 @@ pipelines:
           affinityGroup: dbp_group
           dockerFileLocation: .
           dockerFileName: Dockerfile
-          dockerImageName: pipelines.jfrog.io/quickstarts-docker/dbp  # replace with your image path and name
+          dockerImageName: tomjfrog.jfrog.io/pipelines-quickstart-docker/dbp  # replace with your image path and name
           dockerImageTag: ${run_number}
           inputResources:
             - name: dbp_repo
