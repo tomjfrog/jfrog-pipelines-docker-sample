@@ -10,7 +10,7 @@ resources:
   - name: dbp_image
     type: Image
     configuration:
-      registry: SaaS_tomjfrog                                # <-- replace with your artifactory integration
+      registry: jfrog_cloud                                # <-- replace with your artifactory integration
       sourceRepository: pipelines-quickstart-docker               # <-- required if registry is Artifactory
       imageName: tomjfrog.jfrog.io/pipelines-quickstart-docker/dbp  # < -- replace with your image path and name
       imageTag: latest
@@ -19,14 +19,14 @@ resources:
   - name: dbp_build_info
     type: BuildInfo
     configuration:
-      sourceArtifactory: SaaS_tomjfrog
+      sourceArtifactory: jfrog_cloud
       buildName: dbp_build
       buildNumber: 1    
 
   - name: dbp_promoted_build_info
     type: BuildInfo
     configuration:
-      sourceArtifactory: SaaS_tomjfrog
+      sourceArtifactory: jfrog_cloud
       buildName: dbp_build
       buildNumber: 1
       
@@ -47,7 +47,7 @@ pipelines:
           inputResources:
             - name: dbp_repo
           integrations:
-            - name: SaaS_tomjfrog                            # <-- replace with your artifactory integration
+            - name: jfrog_cloud                            # <-- replace with your artifactory integration
 
       - name: docker_push
         type: DockerPush
@@ -55,7 +55,7 @@ pipelines:
           affinityGroup: dbp_group
           targetRepository: pipelines-quickstart-docker
           integrations:
-            - name: SaaS_tomjfrog                            # <-- replace with your artifactory integration
+            - name: jfrog_cloud                            # <-- replace with your artifactory integration
           inputSteps:
             - name: docker_build
           outputResources:
@@ -74,7 +74,7 @@ pipelines:
         configuration:
           targetRepository: pipelines-quickstart-docker
           integrations:
-            - name: SaaS_tomjfrog
+            - name: jfrog_cloud
           inputResources:
             - name: dbp_build_info
           outputResources:
